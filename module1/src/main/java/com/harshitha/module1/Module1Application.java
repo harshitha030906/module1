@@ -19,8 +19,7 @@ public class Module1Application implements CommandLineRunner {
 	}
 
 	//constructor DI
-	public Module1Application(
-			@Qualifier("sms") NotificationService notificationService) {
+	public Module1Application(NotificationService notificationService) {
 		this.notificationService = notificationService;
 	}
 
