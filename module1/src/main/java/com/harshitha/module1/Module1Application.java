@@ -1,5 +1,7 @@
 package com.harshitha.module1;
 
+import com.harshitha.module1.notification.EmailNotificationService;
+import com.harshitha.module1.notification.SmsNotifcationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,20 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Module1Application implements CommandLineRunner {
 
 	@Autowired
-	PaymentService paymentServiceobj1;
-
-	@Autowired
-	PaymentService paymentServiceobj2;
+	NotificationService notificationService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Module1Application.class, args);
 	}
 
 	public void run(String... args) throws Exception {
-		System.out.println(paymentServiceobj1.hashCode());
-		System.out.println(paymentServiceobj2.hashCode());
-		paymentServiceobj1.pay();
-		paymentServiceobj2.pay();
+		notificationService.send("hii");
 	}
 
 }
