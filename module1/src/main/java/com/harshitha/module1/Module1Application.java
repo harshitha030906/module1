@@ -10,11 +10,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Module1Application implements CommandLineRunner {
 
-	@Autowired
+	//@Autowired
 	NotificationService notificationService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Module1Application.class, args);
+	}
+
+	//constructor DI
+	public Module1Application(NotificationService notificationService) {
+		this.notificationService = notificationService;
 	}
 
 	public void run(String... args) throws Exception {
