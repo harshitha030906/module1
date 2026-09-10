@@ -3,6 +3,7 @@ package com.harshitha.module1;
 import com.harshitha.module1.notification.EmailNotificationService;
 import com.harshitha.module1.notification.SmsNotifcationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +19,8 @@ public class Module1Application implements CommandLineRunner {
 	}
 
 	//constructor DI
-	public Module1Application(NotificationService notificationService) {
+	public Module1Application(
+			@Qualifier("sms") NotificationService notificationService) {
 		this.notificationService = notificationService;
 	}
 
