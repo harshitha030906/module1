@@ -23,7 +23,7 @@ public class Module1Application implements CommandLineRunner {
 	}
 
 	public void run(String... args) throws Exception {
-		notificationService.send("hii");
+		notificationService.send("hiii");
 	}
 
 }
