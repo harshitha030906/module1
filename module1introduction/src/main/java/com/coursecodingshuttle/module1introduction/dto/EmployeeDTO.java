@@ -21,7 +21,7 @@ public class EmployeeDTO {
         this.age = age;
     }
 
-    public long getEmployeeID() {
+    public Long getEmployeeID() {
         return employeeID;
     }
 
