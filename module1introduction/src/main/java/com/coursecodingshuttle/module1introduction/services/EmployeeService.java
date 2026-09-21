@@ -26,6 +26,9 @@ public class EmployeeService {
 
     public EmployeeDTO getEmployeeByID(Long id){
         EmployeeEntity employeeEntity = employeeRepository.findById(id).orElse(null);
+        if(employeeEntity == null){
+            return null;
+        }
         return modelMapper.map(employeeEntity, EmployeeDTO.class);
     }
 
