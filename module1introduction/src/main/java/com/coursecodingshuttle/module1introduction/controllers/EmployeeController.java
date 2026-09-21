@@ -4,19 +4,23 @@ import com.coursecodingshuttle.module1introduction.dto.EmployeeDTO;
 import com.coursecodingshuttle.module1introduction.entities.EmployeeEntity;
 import com.coursecodingshuttle.module1introduction.repositories.EmployeeRepository;
 import com.coursecodingshuttle.module1introduction.services.EmployeeService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/employees") //parent path for all the below paths
 public class EmployeeController {
 
     private final EmployeeService employeeservice;
+    private final ModelMapper modelMapper;
 
-    public EmployeeController(EmployeeService employeeservice){
+    public EmployeeController(EmployeeService employeeservice, ModelMapper modelMapper){
         this.employeeservice = employeeservice;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping(path = "/{employeeId}")
@@ -37,8 +41,19 @@ public class EmployeeController {
         return employeeservice.postEmployee(inputEmployee);
     }
 
-    @PutMapping
-    public String putEmployee(){
-        return "hello from put";
+    @PutMapping("/{employeeId}")
+    public EmployeeDTO updateEmployee(EmployeeDTO inputEmployee, @PathVariable(name = "employeeId") Long id){
+        return employeeservice.updateEmployee(inputEmployee, id);
+    }
+
+    @DeleteMapping("/{employeeId}")
+    public boolean EmployeeDelete(@PathVariable(name = "employeeId") Long id){
+        return employeeservice.deleteEmployee(id);
+    }
+
+    @PatchMapping("/{employeeId}")
+    public EmployeeDTO updatePartialEmployee(@RequestBody Map<String, Object> updates,
+                                             @PathVariable(name = "employeeId") Long id){
+        return employeeservice.updatePartialEmployee(updates, id);
     }
 }

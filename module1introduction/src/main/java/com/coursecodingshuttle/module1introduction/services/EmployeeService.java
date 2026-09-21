@@ -5,8 +5,12 @@ import com.coursecodingshuttle.module1introduction.entities.EmployeeEntity;
 import com.coursecodingshuttle.module1introduction.repositories.EmployeeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,6 +40,37 @@ public class EmployeeService {
         EmployeeEntity saveEmployeeEntity = modelMapper.map(inputEmployee, EmployeeEntity.class);
         EmployeeEntity employeeEntity = employeeRepository.save(saveEmployeeEntity);
         return modelMapper.map(employeeEntity, EmployeeDTO.class);
+    }
+
+    public EmployeeDTO updateEmployee(EmployeeDTO inputEmployee, Long id){
+        EmployeeEntity employeeEntity = modelMapper.map(inputEmployee, EmployeeEntity.class);
+        employeeEntity.setEmployeeID(id);
+        EmployeeEntity updatedEmployee = employeeRepository.save(employeeEntity);
+        return modelMapper.map(updatedEmployee, EmployeeDTO.class);
+    }
+
+    public boolean deleteEmployee(Long id){
+        boolean exists = employeeRepository.existsById(id);
+        if(!exists){
+            return false;
+        }
+        employeeRepository.deleteById(id);
+        return true;
+    }
+
+    public EmployeeDTO updatePartialEmployee(Map<String,Object> updates, Long id){
+        boolean exists = employeeRepository.existsById(id);
+        if(!exists){
+            return null;
+        }
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+        updates.forEach((field, value) -> {
+            Field fieldToBeUpdated = ReflectionUtils.findField(EmployeeEntity.class, field);
+            fieldToBeUpdated.setAccessible(true);
+            ReflectionUtils.setField(fieldToBeUpdated, employeeEntity, value);
+        });
+        EmployeeEntity updatedEmployee = employeeRepository.save(employeeEntity);
+        return modelMapper.map(updatedEmployee, EmployeeDTO.class);
     }
 
 }
