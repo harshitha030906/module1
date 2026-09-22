@@ -4,6 +4,7 @@ import com.coursecodingshuttle.module1introduction.dto.EmployeeDTO;
 import com.coursecodingshuttle.module1introduction.entities.EmployeeEntity;
 import com.coursecodingshuttle.module1introduction.repositories.EmployeeRepository;
 import com.coursecodingshuttle.module1introduction.services.EmployeeService;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -47,7 +48,7 @@ public class EmployeeController {
     //now if u give age in the query parameters it doesnt work..you have to give it as inputAge
 
     @PostMapping
-    public ResponseEntity<EmployeeDTO> postEmployee(@RequestBody EmployeeDTO inputEmployee){
+    public ResponseEntity<EmployeeDTO> postEmployee(@RequestBody @Valid EmployeeDTO inputEmployee){
         EmployeeDTO employeeDTO = employeeservice.postEmployee(inputEmployee);
         return new ResponseEntity<>(employeeDTO, HttpStatus.CREATED);
     }
