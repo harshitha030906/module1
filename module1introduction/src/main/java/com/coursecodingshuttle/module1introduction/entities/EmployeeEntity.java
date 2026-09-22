@@ -22,4 +22,5 @@ public class EmployeeEntity {
     private String email;
     private Double salary;
     private Integer age;
+    private String role;
 }

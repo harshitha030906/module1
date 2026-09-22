@@ -54,7 +54,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@RequestBody EmployeeDTO inputEmployee, @PathVariable(name = "employeeId") Long id){
+    public ResponseEntity<EmployeeDTO> updateEmployee(@RequestBody @Valid EmployeeDTO inputEmployee, @PathVariable(name = "employeeId") Long id){
         EmployeeDTO employeeDTO = employeeservice.getEmployeeByID(id);
         if(employeeDTO == null){
             return ResponseEntity.notFound().build();

@@ -1,5 +1,6 @@
 package com.coursecodingshuttle.module1introduction.dto;
 
+import com.coursecodingshuttle.module1introduction.annotations.EmployeeRoleValidation;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,4 +34,8 @@ public class EmployeeDTO {
     @Min(18)
     @Max(value = 99, message = "Age cannot be below 18 and above 99")
     private Integer age;
+
+    @NotNull
+    @EmployeeRoleValidation
+    private String role;
 }
