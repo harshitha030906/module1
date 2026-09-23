@@ -2,6 +2,7 @@ package com.coursecodingshuttle.module1introduction.controllers;
 
 import com.coursecodingshuttle.module1introduction.dto.EmployeeDTO;
 import com.coursecodingshuttle.module1introduction.entities.EmployeeEntity;
+import com.coursecodingshuttle.module1introduction.exceptions.ResourcenotFoundException;
 import com.coursecodingshuttle.module1introduction.repositories.EmployeeRepository;
 import com.coursecodingshuttle.module1introduction.services.EmployeeService;
 import jakarta.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static org.springframework.web.servlet.function.ServerResponse.ok;
 
@@ -34,7 +36,7 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable(name = "employeeId") Long id){
         EmployeeDTO employeeDTO = employeeservice.getEmployeeByID(id);
         if(employeeDTO == null){
-            return ResponseEntity.notFound().build();
+            throw new ResourcenotFoundException("employee not found");
         }
         return ResponseEntity.ok(employeeDTO);
     }
@@ -57,7 +59,7 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDTO> updateEmployee(@RequestBody @Valid EmployeeDTO inputEmployee, @PathVariable(name = "employeeId") Long id){
         EmployeeDTO employeeDTO = employeeservice.getEmployeeByID(id);
         if(employeeDTO == null){
-            return ResponseEntity.notFound().build();
+            throw new ResourcenotFoundException("employee not found" + id);
         }
         return ResponseEntity.ok(employeeservice.updateEmployee(inputEmployee, id));
     }

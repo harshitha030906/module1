@@ -1,6 +1,7 @@
 package com.coursecodingshuttle.module1introduction.dto;
 
 import com.coursecodingshuttle.module1introduction.annotations.EmployeeRoleValidation;
+import com.coursecodingshuttle.module1introduction.annotations.PrimeNumberValidation;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,4 +39,7 @@ public class EmployeeDTO {
     @NotNull
     @EmployeeRoleValidation
     private String role;
+
+    @PrimeNumberValidation
+    private Integer num;
 }
