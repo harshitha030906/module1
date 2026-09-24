@@ -1,5 +1,22 @@
-insert into product_database.product_table(created_at,price, quantity, sku, title, updated_at)
-values
-    (NOW(), 25, 250, "parle", "parle biscuit", NOW()),
-    (NOW(), 30, 300, "coke", "coca cola", now()),
-    (NOW(),30, 300, "goodday", "good day biscuit",NOW());
+INSERT INTO product_database.product_table (sku, price, title, quantity, created_at, updated_at)
+VALUES
+    ('parle', 25, 'parle biscuit', 250, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('coke', 30, 'coca cola', 300, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('goodday', 30, 'good day biscuit', 300, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('lays', 20, 'lays classic', 150, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('pepsi', 30, 'pepsi', 280, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('oreo', 40, 'oreo biscuits', 200, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('sprite', 30, 'sprite', 250, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('fanta', 30, 'fanta orange', 220, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('kurkure', 20, 'kurkure masala munch', 180, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('hideandseek', 35, 'hide and seek biscuit', 170, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('thumsup', 35, 'thums up', 240, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('mazza', 35, 'maaza mango drink', 200, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('milk', 30, 'amul milk', 150, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('chips', 20, 'potato chips', 190, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('marie', 25, 'marie gold biscuit', 230, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('5star', 20, '5 star chocolate', 160, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('dairy-milk', 50, 'dairy milk chocolate', 140, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('redbull', 125, 'red bull', 100, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('sprite-zero', 40, 'sprite zero', 120, '2026-09-23 22:08:30', '2026-09-23 22:08:30'),
+    ('jim-jam', 35, 'jim jam biscuits', 210, '2026-09-23 22:08:30', '2026-09-23 22:08:30');

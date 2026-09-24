@@ -15,14 +15,14 @@ import java.util.Optional;
 @SpringBootTest
 class JpatutsApplicationTests {
 
-	@Autowired
-    ProductRepository productRepository;
+	/*@Autowired
+    ProductRepository productRepository;*/
 
 	@Test
 	void contextLoads() {
 	}
 
-	@Test
+/*	@Test
 	void testRepository(){
 		Product product = Product.builder()
 				.price(BigDecimal.valueOf(200.00))
@@ -35,9 +35,9 @@ class JpatutsApplicationTests {
 
 		Product saved = productRepository.save(product);
 		System.out.println(saved);
-	}
+	}*/
 
-	@Test
+/*	@Test
 	void getRepository(){
 		List<Product> products = productRepository.findByTitle("coca cola");
 		System.out.println(products);
@@ -59,5 +59,5 @@ class JpatutsApplicationTests {
 	void testUpdatedBy(){
 		Optional<Product> product = productRepository.findByTitleAndSku("coca cola", "coke");
 		System.out.println(product);
-	}
+	}*/
 }

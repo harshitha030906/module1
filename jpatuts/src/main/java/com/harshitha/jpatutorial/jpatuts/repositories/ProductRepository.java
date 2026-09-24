@@ -1,6 +1,9 @@
 package com.harshitha.jpatutorial.jpatuts.repositories;
 
 import com.harshitha.jpatutorial.jpatuts.entites.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -22,4 +25,13 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 
     @Query("select e from Product e where e.title=?1 and e.sku=?2")
     Optional<Product> findByTitleAndSku(String title, String sku);
+
+    List<Product> findByOrderByPrice();
+
+    List<Product> findBy(Sort sort);
+
+    List<Product> getBy(Sort sort);
+
+    /*List<Product> findBy(Sort sort);*/
+    Page<Product> findAll(Pageable pageable);
 }
